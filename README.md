@@ -332,6 +332,65 @@ The dashboard includes an **Attack Simulation** tab that generates synthetic but
 
 ---
 
+## 🔄 Retraining the Model & Pushing Updates
+
+If you modify the model (retrain with different parameters) or any code and want to push updates to GitHub:
+
+### 1. Activate Virtual Environment
+```bash
+# Linux
+source .venv/bin/activate
+
+# Windows
+.venv\Scripts\activate
+```
+
+### 2. Run the Full Pipeline (Optional - only if retraining)
+```bash
+# Step 1: Load data
+python src/load_data.py
+
+# Step 2: Preprocess
+python src/preprocess.py
+
+# Step 3: Feature selection + SMOTE
+python src/feature_selection.py
+
+# Step 4: Train & evaluate models
+python src/train_evaluate.py
+```
+
+### 3. Stage Changes
+```bash
+git add .
+```
+
+### 4. Commit with Message
+```bash
+git commit -m "Updated model/your-change-description"
+```
+
+### 5. Push to GitHub
+```bash
+git push origin master
+```
+
+### Important: Large Files
+If you retrain the model and it creates new `.joblib` or `.npy` files:
+- These files are in `.gitignore` by default (large files excluded)
+- If you need to include them, use Git LFS:
+```bash
+git lfs install
+git lfs track "models/*.joblib"
+git lfs track "data/splits/*.npy"
+git add .gitattributes
+git add models/ data/splits/
+git commit -m "Add model files"
+git push
+```
+
+---
+
 ## 🐛 Troubleshooting
 
 ### Dashboard won't start
