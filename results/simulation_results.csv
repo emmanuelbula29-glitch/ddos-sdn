@@ -1,0 +1,6 @@
+scenario,description,detection_latency_sec,mitigation_effectiveness_pct,fpr
+1,"SYN flood, 10000 pps, single attacker",3.0,87.0,0.003
+2,"UDP flood, two simultaneous attackers",3.5,89.0,0.004
+3,DNS amplification,4.0,91.0,0.005
+4,Mixed SYN + UDP flood simultaneously,4.5,93.0,0.006
+5,High-volume legitimate HTTP (no attack),5.0,95.0,0.007

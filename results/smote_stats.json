@@ -1,0 +1,15 @@
+{
+  "class_0_Benign": 97094,
+  "class_1_DoS_Syn": 97094,
+  "class_2_DrDoS_DNS": 97094,
+  "class_3_DrDoS_LDAP": 97094,
+  "class_4_DrDoS_MSSQL": 97094,
+  "class_5_DrDoS_NTP": 97094,
+  "class_6_DrDoS_NetBIOS": 97094,
+  "class_7_DrDoS_SNMP": 97094,
+  "class_8_DrDoS_TFTP": 97094,
+  "class_9_DrDoS_UDP": 97094,
+  "class_10_Portmap": 97094,
+  "class_11_UDPLag": 97094,
+  "class_12_WebDDoS": 97094
+}

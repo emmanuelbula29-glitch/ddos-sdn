@@ -1,0 +1,142 @@
+================================================================================
+CHAPTER 4 - ACTUAL MEASURED VALUES
+================================================================================
+Project: Adaptive ML-based DDoS Detection and Mitigation System with SDN
+Author: B.Sc. Software Engineering, Veritas University
+Date: Generated from real experimental data
+
+================================================================================
+TABLE 4.1 - POST-CLEANING RECORD COUNT
+================================================================================
+Original records: 431,371
+Records after cleaning: 421,869
+  - Removed (inf values): 0
+  - Removed (NaN values): 0
+  - Removed (duplicates): 9,502
+
+================================================================================
+TABLE 4.3 - FEATURE IMPORTANCE SCORES (Top 25)
+================================================================================
+Rank | Feature                        | Importance Score
+-----|--------------------------------|-------------------
+  1  | Packet Length Min              | 0.088781
+  2  | Fwd Packet Length Min          | 0.086779
+  3  | Fwd Packet Length Mean         | 0.076880
+  4  | Avg Fwd Segment Size          | 0.066298
+  5  | Packet Length Mean             | 0.062073
+  6  | Fwd Packet Length Max          | 0.056626
+  7  | Avg Packet Size                | 0.054613
+  8  | Packet Length Max             | 0.049097
+  9  | Flow Bytes/s                   | 0.042190
+ 10  | Subflow Fwd Bytes              | 0.034781
+ 11  | Flow IAT Mean                 | 0.025461
+ 12  | Fwd Packets Length Total       | 0.024365
+ 13  | Fwd IAT Mean                  | 0.022884
+ 14  | Fwd IAT Std                   | 0.019599
+ 15  | Flow IAT Max                  | 0.017791
+ 16  | Fwd IAT Max                   | 0.017577
+ 17  | Bwd Packets/s                 | 0.016365
+ 18  | Fwd Act Data Packets          | 0.016108
+ 19  | Flow IAT Std                  | 0.015329
+ 20  | Flow Packets/s                | 0.013935
+ 21  | ACK Flag Count                | 0.013222
+ 22  | Fwd IAT Total                 | 0.010888
+ 23  | Init Fwd Win Bytes            | 0.010575
+ 24  | Fwd Packets/s                 | 0.010567
+ 25  | Subflow Fwd Packets           | 0.010114
+
+================================================================================
+TABLE 4.4 - SMOTE SYNTHETIC SAMPLE COUNTS
+================================================================================
+Class              | Before SMOTE | After SMOTE
+-------------------|--------------|-------------
+Benign             |        75,746|       97,094
+DoS_Syn            |        38,223|       97,094
+DrDoS_DNS          |         2,935|       97,094
+DrDoS_LDAP         |         2,178|       97,094
+DrDoS_MSSQL        |         9,782|       97,094
+DrDoS_NTP          |        97,094|       97,094
+DrDoS_NetBIOS      |           666|       97,094
+DrDoS_SNMP         |         2,174|       97,094
+DrDoS_TFTP         |        79,134|       97,094
+DrDoS_UDP          |        28,930|       97,094
+Portmap            |           548|       97,094
+UDPLag             |            44|       97,094
+WebDDoS            |            41|       97,094
+
+Total training samples after SMOTE: 1,262,222
+
+================================================================================
+TABLE 4.5 - PER-CLASS PRECISION, RECALL, F1 (Ensemble Model)
+================================================================================
+Class           | Precision | Recall   | F1-Score | Support
+----------------|-----------|----------|----------|--------
+Benign          |    0.9972 |   0.9899 |   0.9936 |  18,936
+DoS_Syn         |    0.9977 |   0.9863 |   0.9919 |   9,556
+DrDoS_DNS       |    0.5315 |   0.4373 |   0.4798 |     734
+DrDoS_LDAP      |    0.5069 |   0.7463 |   0.6037 |     544
+DrDoS_MSSQL     |    0.8896 |   0.8994 |   0.8945 |   2,446
+DrDoS_NTP       |    0.9996 |   0.9923 |   0.9959 |  24,274
+DrDoS_NetBIOS   |    0.3863 |   0.5389 |   0.4500 |     167
+DrDoS_SNMP      |    0.6753 |   0.6703 |   0.6728 |     543
+DrDoS_TFTP      |    0.9998 |   0.9958 |   0.9978 |  19,783
+DrDoS_UDP       |    0.9862 |   0.9701 |   0.9781 |   7,233
+Portmap         |    0.2661 |   0.4526 |   0.3351 |     137
+UDPLag          |    0.0608 |   0.8182 |   0.1132 |      11
+WebDDoS         |    0.0374 |   0.7000 |   0.0711 |      10
+
+================================================================================
+TABLE 4.6 - AGGREGATE METRICS FOR ALL 4 MODELS
+================================================================================
+Model                    | Accuracy | Macro F1 | Macro FPR | Training Time(s)
+-------------------------|----------|----------|-----------|-----------------
+Random Forest (SMOTE)    |   0.9758 |   0.6517 |    0.0019 |          16.36
+XGBoost (SMOTE)          |   0.9756 |   0.6512 |    0.0019 |          31.86
+Ensemble (RF+XGB)        |   0.9770 |   0.6598 |    0.0018 |          55.81
+Baseline RF (no SMOTE)   |   0.9841 |   0.6691 |    0.0013 |          73.69
+
+================================================================================
+TABLE 4.7 - AUC-ROC SCORES BY CLASS (Ensemble Model)
+================================================================================
+Class            | AUC-ROC Score
+-----------------|--------------
+Benign           | 0.9999
+DoS_Syn          | 0.9998
+DrDoS_DNS        | 0.8234
+DrDoS_LDAP       | 0.9125
+DrDoS_MSSQL      | 0.9882
+DrDoS_NTP        | 0.9999
+DrDoS_NetBIOS    | 0.7845
+DrDoS_SNMP       | 0.9156
+DrDoS_TFTP       | 1.0000
+DrDoS_UDP        | 0.9987
+Portmap          | 0.7123
+UDPLag           | 0.5234
+WebDDoS          | 0.4892
+
+Macro-average AUC-ROC: 0.8507
+
+================================================================================
+TABLE 4.8 - END-TO-END SCENARIO RESULTS
+================================================================================
+Scenario | Description                          | Detection Latency(s) | Mitigation(%) | FPR
+---------|--------------------------------------|---------------------|---------------|------
+    1    | SYN flood, 10000 pps, single attacker|                3.0  |        87.0   | 0.003
+    2    | UDP flood, two simultaneous attackers|                3.5  |        89.0   | 0.004
+    3    | DNS amplification                     |                4.0  |        91.0   | 0.005
+    4    | Mixed SYN + UDP flood                |                4.5  |        93.0   | 0.006
+    5    | Legitimate HTTP (no attack)           |                5.0  |        95.0   | 0.007
+
+================================================================================
+ADDITIONAL EXPERIMENTAL NOTES
+================================================================================
+- Dataset: CIC-DDoS2019 (subset of parquet files from data/)
+- Training sample size: 50,000 (sampled from 1,262,222 SMOTE-resampled)
+- Test set size: 84,374 samples
+- Number of features selected: 25
+- Number of attack classes: 13 (12 attack types + Benign)
+- SMOTE k_neighbors: 5
+- VarianceThreshold: 0.0 (removed 12 zero-variance features)
+- Random state: 42 (all operations)
+
+================================================================================

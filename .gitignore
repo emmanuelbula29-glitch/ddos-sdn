@@ -1,0 +1,28 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# Large data files (use git lfs for these)
+data/raw_combined.csv
+data/cleaned.csv
+data/splits/
+*.parquet
+
+# Model files (large)
+models/ensemble_model.joblib
+
+# Logs
+logs/*.log
+logs/alerts.csv
+logs/overrides.csv
+
+# OS
+.DS_Store
+Thumbs.db
